@@ -1,4 +1,4 @@
-Go to the repository with the Terminal and paste the code below to download Python dependencies needed to run this project
+Go to the repository directory with the Terminal and paste the code below to download Python dependencies needed to run this project
 
 `pip install -r libraries.txt`
 
