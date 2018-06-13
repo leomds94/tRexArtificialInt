@@ -1,0 +1,34 @@
+from random import random
+from individual import Individual
+
+class Population():
+    
+    def __init__(self, populationSize, chromosomeLength=0):
+        
+        self.fitness = -1
+        self.individuals = []
+        
+        for i in range(populationSize):
+            ind = Individual([])
+            ind.initialize(chromosomeLength)
+            self.individuals.append(ind)
+            
+    def fittest(self, index):
+        self.individuals.sort(key=lambda ind: ind.fitness, reverse=True)
+        return self.individuals[index]
+    
+    def shuffle(self):
+        for i in reversed(range(self.size)):
+            index = random() * len(self.size)
+            individual = self.individuals[index]
+            self.individuals[index] = self.individuals[i]
+            self.individuals[i] = individual
+
+    def size(self):
+        return len(self.individuals)
+    
+    def __repr__(self):
+        return "[{}] Population Fitenss: {}, Size: {}".format(
+            self.__class__.__name__, 
+            self.fitness, 
+            self.size())
