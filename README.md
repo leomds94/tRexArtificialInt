@@ -1,1 +1,5 @@
-trex_neural_ga
+Go to the repository with the Terminal and paste the code below to download Python dependencies needed to run this project
+
+`pip install -r requirements.txt`
+
+Now just run the code by pasting `python ai.py` and you are good to go and to rule!!!
