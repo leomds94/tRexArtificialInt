@@ -1,4 +1,5 @@
 from random import random
+import numpy as np
 from individual import Individual
 
 class Population():
@@ -16,6 +17,13 @@ class Population():
     def fittest(self, index):
         self.individuals.sort(key=lambda ind: ind.fitness, reverse=True)
         return self.individuals[index]
+
+    def addIndividual(self, chromosomes, index):
+        new_chromosomes = []
+        for c in chromosomes:
+            new_chromosomes.append(c)
+        self.individuals[index] = Individual(new_chromosomes)
+        
     
     def shuffle(self):
         for i in reversed(range(self.size)):

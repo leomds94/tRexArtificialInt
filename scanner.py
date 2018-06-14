@@ -48,7 +48,7 @@ class Scanner:
                 self.game_start = (xstart, y - self.game_dimension[1])
                 self.game_end = (xstart + self.game_dimension[0], y)
                 self.image = screenshot(self.game_start[0], self.game_start[1], self.game_end[0], self.game_end[1])
-                print("x0: {}, y0: {}, x1: {}, y1: {}").format(self.game_start[0], self.game_start[1], self.game_end[0], self.game_end[1])
+                #print("x0: {}, y0: {}, x1: {}, y1: {}").format(self.game_start[0], self.game_start[1], self.game_end[0], self.game_end[1])
                 return True
             
         raise Exception("Game not found!")
@@ -102,7 +102,7 @@ class Scanner:
                 if is_dino_color(color):
                     return [(x-x_diff), (110 - y), time]
 
-        return [1000, 0, time]
+        return [1000000, 0, time]
 
     def is_game_over(self, image):
         s = 0

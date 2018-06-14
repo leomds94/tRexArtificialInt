@@ -15,6 +15,8 @@ class GeneticAlgorithm():
 
     def __init__(self, population_size, chromosome_length, mutation_rate, crossover_rate, elitism_count):
         self.population = self.init_population(population_size, chromosome_length)
+        #trained1 = [-0.7804749316601893, 0.1513393337247957, -0.2768261313809339, 0.4701464868308525, 0.3439301467453155, 0.8967267012585185, -0.073053272613403, -0.8093484800832229, 0.11935976376011337, 0.3656041574367368, -0.25653148336315446, -0.46913389704113073]
+        #self.population.addIndividual(trained1, 0)
         self.mutation_rate = mutation_rate
         self.crossover_rate = crossover_rate
         self.elitism_count = elitism_count
@@ -67,21 +69,22 @@ class GeneticAlgorithm():
         while True:
             try:
                 obs = self.scanner.find_next_obstacle(self.down_pressed)
-                sleep(0.1)
-                print("dist: {}, length: {}, speed: {}").format(obs['distance'], obs['length'], obs['speed'])
+                #print("dist: {}, length: {}, speed: {}").format(obs['distance'], obs['length'], obs['speed'])
                 inputs = [obs['distance'] / 1000.0, obs['length'] / 100.0, obs['speed'] / 10.0]
                 outputs = self.mlp.forward(np.array(inputs, dtype=float))
 
-                if last > 0.55 and outputs[0] <= 0.55 and self.up_pressed:
+                if last > -0.25 and outputs[0] <= -0.25 and self.up_pressed:
                    self.release_key('Up')
-                elif last < 0.45 and outputs[0] >= 0.45 and self.down_pressed:
+                elif last < -0.45 and outputs[0] >= -0.45 and self.down_pressed:
                    self.release_key('Down')
 
-                if outputs[0] > 0.55:
+                if outputs[0] > -0.25:
                     self.press_key('Up')
-                elif outputs[0] < 0.45:
+                elif outputs[0] < -0.45:
                     self.press_key('Down')
                 last = outputs[0]
+
+                print last
             except:
                 sleep(0.5)
                 break

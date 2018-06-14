@@ -15,7 +15,7 @@ while(True):
     except:
         sys.exc_info()[0]
 
-    print(ga.population.fitness)
+    print("Fitness:",ga.population.fitness)
 
     ga.population = ga.crossover_population()
     ga.population = ga.mutate_population()
