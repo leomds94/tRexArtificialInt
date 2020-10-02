@@ -84,7 +84,7 @@ class GeneticAlgorithm():
                     self.press_key('Down')
                 last = outputs[0]
 
-                print last
+                print (last)
             except:
                 sleep(0.5)
                 break
